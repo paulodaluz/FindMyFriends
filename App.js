@@ -11,6 +11,19 @@ import Map from "./src/pages/map";
 import ListFriends from "./src/pages/listFriends";
 import CreateFriend from "./src/pages/createFriend";
 
+//Desabilitano Warnings
+import { YellowBox } from "react-native";
+YellowBox.ignoreWarnings(["Setting a timer"]);
+
+//Configurando Encondig
+import { decode, encode } from "base-64";
+if (!global.btoa) {
+  global.btoa = encode;
+}
+if (!global.atob) {
+  global.atob = decode;
+}
+
 export default function App() {
   const Stack = createStackNavigator();
 
