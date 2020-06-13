@@ -1,19 +1,97 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import "react-native-gesture-handler";
+import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
+import Menu from "./src/pages/menu";
+import Map from "./src/pages/map";
+import ListFriends from "./src/pages/listFriends";
+import CreateFriend from "./src/pages/createFriend";
 
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Menu">
+        <Stack.Screen
+          name="Menu"
+          component={Menu}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerStyle: {
+              backgroundColor: "rgb(113, 89, 193)",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerShown: true,
+            title: "MENU",
+            headerTitleAlign: "center",
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen
+          name="FriendsMap"
+          component={Map}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerStyle: {
+              backgroundColor: "rgb(113, 89, 193)",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerShown: true,
+            title: "Mapa de Amigos",
+            headerTitleAlign: "center",
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen
+          name="ListFriends"
+          component={ListFriends}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerStyle: {
+              backgroundColor: "rgb(113, 89, 193)",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerShown: true,
+            title: "Lista de Amigos",
+            headerTitleAlign: "center",
+            headerLeft: null,
+          }}
+        />
+        <Stack.Screen
+          name="CreateFriend"
+          component={CreateFriend}
+          options={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+            headerStyle: {
+              backgroundColor: "rgb(113, 89, 193)",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerShown: true,
+            title: "Criar Amigo",
+            headerTitleAlign: "center",
+            headerLeft: null,
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});
