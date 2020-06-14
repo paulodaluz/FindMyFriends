@@ -19,8 +19,8 @@ export const saveFriend = (friend, chave = "") => {
     });
   }
 };
-/* 
-export const deleteFriend = (friend) => {
+
+export const deleteMyFriend = (friend) => {
   return new Promise((resolve, reject) => {
     db.collection("friends")
       .doc(friend.key)
@@ -30,7 +30,7 @@ export const deleteFriend = (friend) => {
   });
 };
 
-export const getFriends = () => {
+export const getMyFriends = () => {
   return new Promise((resolve, reject) => {
     db.collection("friends")
       .get()
@@ -47,4 +47,3 @@ export const getFriends = () => {
       .catch((erro) => reject(erro));
   });
 };
- */

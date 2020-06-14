@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import { saveFriend } from "../service/friendsService";
 
 const CreateFriend = (props) => {
+  const { navigation } = props;
+
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
@@ -11,20 +13,21 @@ const CreateFriend = (props) => {
   const createFriend = () => {
     if (!name || !phoneNumber || !address) {
       setMensagem("Campos Inválidos");
+    } else {
+      const friend = {
+        name,
+        phoneNumber,
+        address,
+      };
+      saveFriend(friend)
+        .then((res) => {
+          console.log(res);
+          setMensagem("Dados Inseridos com Sucesso!");
+        })
+        .catch((err) => {
+          setMensagem(err);
+        });
     }
-    const friend = {
-      name,
-      phoneNumber,
-      address,
-    };
-    saveFriend(friend, "")
-      .then((res) => {
-        console.log(res);
-        setMensagem("Dados Inseridos com Sucesso!");
-      })
-      .catch((err) => {
-        setMensagem(err);
-      });
   };
 
   return (
@@ -63,6 +66,12 @@ const CreateFriend = (props) => {
           style={styles.botao}
         />
       </View>
+
+      <Button
+        title="Voltar ao Menu"
+        onPress={() => navigation.replace("Menu")}
+        color="blue"
+      />
     </View>
   );
 };
